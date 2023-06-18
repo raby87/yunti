@@ -1,5 +1,4 @@
 <?php
-echo "1212";die;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 

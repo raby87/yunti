@@ -11,13 +11,13 @@
         "darkaonline/l5-swagger": "^8.5",
         "encore/laravel-admin": "^1.8",
         "fruitcake/laravel-cors": "^2.0",
+        "geoip2/geoip2": "^2.13",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.54",
         "laravel/tinker": "^2.5",
         "mews/captcha": "^3.3",
         "nesbot/carbon": "^2.67",
         "predis/predis": "^2.1",
-        "torann/geoip": "^3.0",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {

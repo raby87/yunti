@@ -8,6 +8,7 @@
         "php": "^7.3|^8.0",
         "barryvdh/laravel-debugbar": "^3.7",
         "barryvdh/laravel-ide-helper": "^2.13",
+        "darkaonline/l5-swagger": "^8.5",
         "encore/laravel-admin": "^1.8",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -16,6 +17,7 @@
         "mews/captcha": "^3.3",
         "nesbot/carbon": "^2.67",
         "predis/predis": "^2.1",
+        "torann/geoip": "^3.0",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {

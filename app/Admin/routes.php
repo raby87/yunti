@@ -13,4 +13,6 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
 
+    $router->get('/guests', 'GuestController@index');
+
 });

@@ -15,4 +15,6 @@ Route::group([
 
     $router->get('/guests', 'GuestController@index');
 
+    $router->get('/users', [\App\Admin\Controllers\UserController::class,"index"]);
+
 });

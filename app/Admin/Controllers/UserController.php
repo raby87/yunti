@@ -4,10 +4,11 @@ namespace App\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 
-class UserController extends Controller
+class UserController extends AdminController
 {
     public function index(Content $content)
     {

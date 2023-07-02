@@ -19,6 +19,34 @@ class UserController extends Controller
 
     }
     //生成验证码，返回messageId
+    /**
+     *
+     * @OA\Get(
+     *     path="/getCaptcha",
+     *     tags={"api"},
+     *     operationId="getCaptcha",
+     *     summary="获得验证码",
+     *     description="获得验证码",
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *             @OA\Schema(
+     *                 type="object",
+     *                 required={"code"},
+     *                  @OA\Property(property="data", type="object",
+     *                      @OA\Property(property="key", type="string"),
+     *                      @OA\Property(property="img", type="string"),
+     *                  ),
+     *                  @OA\Property(property="msg", type="string", default=""),
+     *                  @OA\Property(property="code", type="integer", default=200)
+     *             )
+     *         )
+     *      ),
+     * )
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getCaptcha(){
         $captcha = Captcha::create('flat', true);
         //key=messageId
@@ -38,7 +66,80 @@ class UserController extends Controller
 
 
     /**
-     * 用户注册
+     * @OA\Post(
+     *     path="/register",
+     *     tags={"api"},
+     *     operationId="register",
+     *     summary="注册",
+     *     description="注册",
+     *     @OA\Parameter(
+     *         description="昵称",
+     *         in="query",
+     *         name="nickname",
+     *         required=true,
+     *         @OA\Schema(
+     *          type="string"
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         description="邮箱",
+     *         in="query",
+     *         name="email",
+     *         required=true,
+     *         @OA\Schema(
+     *          type="string"
+     *         )
+     *
+     *     ),
+     *     @OA\Parameter(
+     *         description="密码",
+     *         in="query",
+     *         name="password",
+     *         required=true,
+     *         @OA\Schema(
+     *          type="string"
+     *         )
+     *
+     *     ),
+     *     @OA\Parameter(
+     *         description="二维码",
+     *         in="query",
+     *         name="code",
+     *         required=true,
+     *         @OA\Schema(
+     *          type="string"
+     *         )
+     *
+     *     ),
+     *     @OA\Parameter(
+     *         description="获取验证吗返回的messageId",
+     *         in="query",
+     *         name="messageId",
+     *         required=true,
+     *         @OA\Schema(
+     *          type="string"
+     *         )
+     *
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *             @OA\Schema(
+     *                 type="object",
+     *                 required={"code"},
+     *                  @OA\Property(property="data", type="object",
+     *                      @OA\Property(property="access_token", type="string"),
+     *                      @OA\Property(property="token_type", type="string"),
+     *                      @OA\Property(property="expires_in", type="string"),
+     *                  ),
+     *                  @OA\Property(property="msg", type="string", default=""),
+     *                  @OA\Property(property="code", type="integer", default=200)
+     *             )
+     *         )
+     *      ),
+     * )
      */
     public function register(Request $request)
     {
@@ -81,7 +182,71 @@ class UserController extends Controller
     }
 
     /**
-     * 用户登录
+     * @OA\Post(
+     *     path="/login",
+     *     tags={"api"},
+     *     operationId="login",
+     *     summary="登录",
+     *     description="登录",
+     *     @OA\Parameter(
+     *         description="邮箱",
+     *         in="query",
+     *         name="email",
+     *         required=true,
+     *         @OA\Schema(
+     *          type="string"
+     *         )
+     *
+     *     ),
+     *     @OA\Parameter(
+     *         description="密码",
+     *         in="query",
+     *         name="password",
+     *         required=true,
+     *         @OA\Schema(
+     *          type="string"
+     *         )
+     *
+     *     ),
+     *     @OA\Parameter(
+     *         description="二维码",
+     *         in="query",
+     *         name="code",
+     *         required=true,
+     *         @OA\Schema(
+     *          type="string"
+     *         )
+     *
+     *     ),
+     *     @OA\Parameter(
+     *         description="获取验证吗返回的messageId",
+     *         in="query",
+     *         name="messageId",
+     *         required=true,
+     *         @OA\Schema(
+     *          type="string"
+     *         )
+     *
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *             @OA\Schema(
+     *                 type="object",
+     *                 required={"code"},
+     *                  @OA\Property(property="data", type="object",
+     *                      @OA\Property(property="access_token", type="string"),
+     *                      @OA\Property(property="token_type", type="string"),
+     *                      @OA\Property(property="expires_in", type="string"),
+     *                  ),
+     *                  @OA\Property(property="msg", type="string", default=""),
+     *                  @OA\Property(property="code", type="integer", default=200)
+     *             )
+     *         )
+     *      ),
+     * )
      */
     public function login(Request $request)
     {
@@ -137,7 +302,23 @@ class UserController extends Controller
     }
 
     /**
-     * 退出登录
+     * @OA\Post(
+     *     path="/logout",
+     *     tags={"api"},
+     *     operationId="logout",
+     *     summary="登出",
+     *     description="登出",
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent(
+     *              type="object",
+     *              @OA\Property(property="data", type="string", default=""),
+     *              @OA\Property(property="msg", type="string", default="xx not correct"),
+     *              @OA\Property(property="code", type="integer", default=-1)
+     *         )
+     *      ),
+     * )
      */
     public function logout(Request $request)
     {
@@ -172,7 +353,49 @@ class UserController extends Controller
     public function forgot(){
         return "";
     }
-
+    /**
+     * @OA\Post(
+     *     path="/resetPwd",
+     *     tags={"api"},
+     *     operationId="resetPwd",
+     *     summary="修改密码",
+     *     description="修改密码",
+     *     @OA\Parameter(
+     *         description="旧密码",
+     *         in="query",
+     *         name="password",
+     *         required=true,
+     *         @OA\Schema(
+     *          type="string"
+     *         )
+     *
+     *     ),
+     *     @OA\Parameter(
+     *         description="新密码",
+     *         in="query",
+     *         name="newpassword",
+     *         required=true,
+     *         @OA\Schema(
+     *          type="string"
+     *         )
+     *
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *             @OA\Schema(
+     *                 type="object",
+     *                 required={"code"},
+     *                  @OA\Property(property="data", type="string" ),
+     *                  @OA\Property(property="msg", type="string", default=""),
+     *                  @OA\Property(property="code", type="integer", default=200)
+     *             )
+     *         )
+     *      ),
+     * )
+     */
     //修改密码
     public function resetPwd($request){
         $validate = Validator::make($request->all(), [

@@ -4,13 +4,15 @@ namespace App\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Guest;
+use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Controllers\Dashboard;
+use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
 
-class GuestController extends Controller
+class GuestController extends AdminController
 {
     public function index(Content $content)
     {
@@ -53,5 +55,16 @@ class GuestController extends Controller
 
         $grid->disableActions();
         return $content->body($grid);
+    }
+
+    /**
+     * 表单定义
+     * @return Form
+     */
+    protected function form()
+    {
+        $form = new Form(new Guest());
+        $form->number('score','分数');
+        return $form;
     }
 }

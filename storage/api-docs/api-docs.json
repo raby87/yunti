@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Auth api",
-        "description": "包含功能：API：登录，注册，验证码   后台：带权限，客户管理。  header：版本号v,来源origin 认证auth, time ",
+        "description": "包含功能：API：登录，注册，验证码   后台：带权限，客户管理。\n *          header：版本号v,来源origin, deviceId设备号 认证auth, time\n *          返回状态码：200成功， 100参数错误， 501外部错误  503内部错误  504系统异常  300联系管理员-配置错误 401认证失败",
         "version": "0.0.1"
     },
     "servers": [
@@ -16,6 +16,40 @@
                 "operationId": "1cd59119d6cd462cc8e2b071a43e2469",
                 "responses": {
                     "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "required": [
+                                        "code"
+                                    ],
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "types": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "msg": {
+                                            "type": "string",
+                                            "default": ""
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "default": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
                         "description": "Display a listing of projects."
                     }
                 }

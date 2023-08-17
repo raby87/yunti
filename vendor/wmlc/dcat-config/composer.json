@@ -1,0 +1,31 @@
+{
+    "name": "wmlc/dcat-config",
+    "description": "dcat admin 后台系统构建工具`配置管理`扩展",
+    "type": "library",
+    "keywords": ["dcat-admin", "extension", "config", "admin_settings"],
+    "homepage": "https://github.com/wmlc/dcat-config",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wml",
+            "email": "1290800466@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "dcat/laravel-admin": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wmlc\\DcatConfig\\": "src/"
+        }
+    },
+    "extra": {
+        "dcat-admin": "Wmlc\\DcatConfig\\DcatConfigServiceProvider",
+        "laravel": {
+            "providers": [
+                "Wmlc\\DcatConfig\\DcatConfigServiceProvider"
+            ]
+        }
+    }
+}

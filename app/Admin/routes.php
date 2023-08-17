@@ -1,6 +1,7 @@
 <?php
 
 use App\Admin\Controllers\UserController;
+use App\Admin\Controllers\ConfigController;
 use Illuminate\Routing\Router;
 
 Admin::routes();
@@ -19,16 +20,16 @@ Route::group([
     $router->get('/users', [UserController::class,"index"]);
 
     //列表
-    $router->get('/config', [UserController::class,"index"])->name('config.index');
+    $router->get('/configs', [ConfigController::class,"index"])->name('configs.index');
     //添加
-    $router->get('/config/create', [UserController::class,"create"])->name('config.create');
+    $router->get('/configs/create', [ConfigController::class,"create"])->name('configs.create');
     //编辑
-    $router->get('/config/{id}/edit', [UserController::class,"edit"])->name('config.edit');
+    $router->get('/configs/{id}/edit', [ConfigController::class,"edit"])->name('configs.edit');
     //快速添加
-    $router->post('/config', [UserController::class,"store"])->name('config.store');
+    $router->post('/configs', [ConfigController::class,"store"])->name('configs.store');
     //行内编辑
-    $router->put('/config/{id}', [UserController::class,"update"])->name('config.update');
+    $router->put('/configs/{id}', [ConfigController::class,"update"])->name('configs.update');
     //删除
-    $router->delete('/config/{id}', [UserController::class,"destroy"])->name('config.destroy');
+    $router->delete('/configs/{id}', [ConfigController::class,"destroy"])->name('configs.destroy');
 
 });

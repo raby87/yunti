@@ -7,6 +7,11 @@
 
 ## 部署
 
+chmod -R 777 storage
+chmod -R 777 bootstrap
+
+#public\storage  => storage\app/public
+php artisan storage:link
 
 ## License
 
